@@ -4,7 +4,7 @@ prepare:
 
 train:
   feature_columns: 
-    - SepalLengthCm
+    - SepalWidthCm
   model:
     name: "random_forest"
     params:
