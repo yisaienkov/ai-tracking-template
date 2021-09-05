@@ -3,12 +3,12 @@ prepare:
   seed: 42
 
 train:
-  feature_columns: 
-    - SepalWidthCm
+  feature_columns:
+  - SepalWidthCm
   model:
-    name: "random_forest"
+    name: random_forest
     params:
-      n_estimators: 2
+      n_estimators: 10
       random_state: 42
       max_depth: 3
 

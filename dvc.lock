@@ -28,7 +28,7 @@ stages:
       nfiles: 2
     - path: src/train.py
       md5: eaef91347fe3a73c5dad846891212cbf
-      size: 600
+      size: 627
     params:
       params.yaml:
         train:
@@ -37,13 +37,13 @@ stages:
           model:
             name: random_forest
             params:
-              n_estimators: 2
+              n_estimators: 10
               random_state: 42
               max_depth: 3
     outs:
     - path: resources/out_train
-      md5: e7f5e337906ebf41f041d1fc3376101a.dir
-      size: 4096
+      md5: 1ca50e1ebb874ff31948ea9fbb838922.dir
+      size: 16184
       nfiles: 1
   evaluate:
     cmd: python src/evaluate.py
@@ -53,13 +53,13 @@ stages:
       size: 5638
       nfiles: 2
     - path: resources/out_train
-      md5: e7f5e337906ebf41f041d1fc3376101a.dir
-      size: 4096
+      md5: 1ca50e1ebb874ff31948ea9fbb838922.dir
+      size: 16184
       nfiles: 1
     - path: src/evaluate.py
       md5: db30f42ffb1d3484af9220330e07f695
-      size: 1467
+      size: 1513
     outs:
     - path: resources/out_evaluate/scores.json
-      md5: b67dbfda2e24cc3cad4b4f0976e1b543
-      size: 161
+      md5: 53f2c97883cd9d4271af26b5899c2abb
+      size: 131
