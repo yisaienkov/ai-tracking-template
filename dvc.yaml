@@ -1,0 +1,28 @@
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - resources/iris.csv
+    - src/prepare.py
+    params:
+    - prepare
+    outs:
+    - resources/out_prepare
+  train:
+    cmd: python src/train.py
+    deps:
+    - resources/out_prepare
+    - src/train.py
+    params:
+    - train
+    outs:
+    - resources/out_train
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - resources/out_prepare
+    - resources/out_train
+    - src/evaluate.py
+    metrics:
+    - resources/out_evaluate/scores.json:
+        cache: false

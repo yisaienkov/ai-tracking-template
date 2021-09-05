@@ -1,0 +1,65 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: resources/iris.csv
+      md5: 717820ef0af287ff346c5cabfb4c612c
+      size: 5107
+    - path: src/prepare.py
+      md5: 27007056fbffdd6f3620d9de0fb8ab60
+      size: 735
+    params:
+      params.yaml:
+        prepare:
+          split: 0.2
+          seed: 42
+    outs:
+    - path: resources/out_prepare
+      md5: 06400076a4579f8bb0a10eedead5f989.dir
+      size: 5638
+      nfiles: 2
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: resources/out_prepare
+      md5: 06400076a4579f8bb0a10eedead5f989.dir
+      size: 5638
+      nfiles: 2
+    - path: src/train.py
+      md5: eaef91347fe3a73c5dad846891212cbf
+      size: 600
+    params:
+      params.yaml:
+        train:
+          feature_columns:
+          - SepalLengthCm
+          model:
+            name: random_forest
+            params:
+              n_estimators: 2
+              random_state: 42
+              max_depth: 3
+    outs:
+    - path: resources/out_train
+      md5: 8feba390547b886d6cdd59fe29d78707.dir
+      size: 4256
+      nfiles: 1
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: resources/out_prepare
+      md5: 06400076a4579f8bb0a10eedead5f989.dir
+      size: 5638
+      nfiles: 2
+    - path: resources/out_train
+      md5: 8feba390547b886d6cdd59fe29d78707.dir
+      size: 4256
+      nfiles: 1
+    - path: src/evaluate.py
+      md5: db30f42ffb1d3484af9220330e07f695
+      size: 1467
+    outs:
+    - path: resources/out_evaluate/scores.json
+      md5: cfdd2782557c086fd60ec352854b4720
+      size: 161
