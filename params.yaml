@@ -6,10 +6,11 @@ train:
   feature_columns:
   - SepalLengthCm
   - SepalWidthCm
+  - PetalLengthCm
   model:
     name: random_forest
     params:
-      n_estimators: 10
+      n_estimators: 2
       random_state: 42
       max_depth: 3
 
