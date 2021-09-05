@@ -1,6 +1,6 @@
 {
-    "train_accuracy": 0.5833333333333334,
-    "test_accuracy": 0.5,
-    "train_f1": 0.5833333333333334,
-    "test_f1": 0.5
+    "train_accuracy": 0.85,
+    "test_accuracy": 0.7333333333333333,
+    "train_f1": 0.85,
+    "test_f1": 0.7333333333333333
 }

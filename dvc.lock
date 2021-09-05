@@ -28,11 +28,12 @@ stages:
       nfiles: 2
     - path: src/train.py
       md5: eaef91347fe3a73c5dad846891212cbf
-      size: 627
+      size: 600
     params:
       params.yaml:
         train:
           feature_columns:
+          - SepalLengthCm
           - SepalWidthCm
           model:
             name: random_forest
@@ -42,8 +43,8 @@ stages:
               max_depth: 3
     outs:
     - path: resources/out_train
-      md5: 1ca50e1ebb874ff31948ea9fbb838922.dir
-      size: 16184
+      md5: 1da0e53f09150c4ec9aa789de2d40206.dir
+      size: 16024
       nfiles: 1
   evaluate:
     cmd: python src/evaluate.py
@@ -53,13 +54,13 @@ stages:
       size: 5638
       nfiles: 2
     - path: resources/out_train
-      md5: 1ca50e1ebb874ff31948ea9fbb838922.dir
-      size: 16184
+      md5: 1da0e53f09150c4ec9aa789de2d40206.dir
+      size: 16024
       nfiles: 1
     - path: src/evaluate.py
       md5: db30f42ffb1d3484af9220330e07f695
-      size: 1513
+      size: 1467
     outs:
     - path: resources/out_evaluate/scores.json
-      md5: 53f2c97883cd9d4271af26b5899c2abb
-      size: 131
+      md5: c2e83bf9129640bfef3dcb1dca31453e
+      size: 133
